@@ -1,0 +1,58 @@
+{% extends 'task/base.html' %}
+
+{% block content %}
+<div class="m-3 table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th style="text-align:center; width:3%" scope="col">#</th>
+                <th style="text-align:center" scope="col">Name</th>
+                <th style="text-align:center" scope="col">Age</th>
+                <th style="text-align:center; width:8%" scope="col">Date</th>
+                <th style="text-align:center; width:15%" scope="col text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in users %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ todo.name }}</td>
+                <td>{{ todo.age }}</td>
+                <td style="text-align:center">{{ todo.created_date|date:"d-m-y" }}</td>
+             
+
+                <td style="text-align:center">
+                    <a class="m-1 btn btn-primary btn-sm" href="{% url 'editsutd' todo.id %}"><i class="fa fa-edit"></i></a>
+                    <a name="delete" class="m-1 btn btn-outline-danger btn-sm" href="{% url 'deletestud' todo.id %}"><i class="fa fa-trash"></i></a>
+
+                    
+               
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% if users.has_other_pages %}
+    <ul class="pagination">
+      {% if users.has_previous %}
+        <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+      {% endif %}
+      {% for i in users.paginator.page_range %}
+        {% if users.number == i %}
+          <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if users.has_next %}
+        <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+      {% endif %}
+    </ul>
+  {% endif %}
+  
+{% endblock %}

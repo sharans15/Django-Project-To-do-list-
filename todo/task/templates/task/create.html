@@ -1,0 +1,49 @@
+{% extends 'task/base.html' %}
+{% block content%}
+
+<div style="height: 50px;">
+
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-100 col-md-100 col-lg-100 mx-auto" style="margin-left: 90%;margin-top: 0%;;">
+    <div class="card card-signin my-5">
+      <div class="card-body" style="background-color: grey;padding:100px">
+          <hr class="my-4">
+        <h3 class="card-title text-center" style="color:white">Create Task</h3>
+        <form class="form-signin" action="/create/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+          <div class="form-label-group">
+              <label for="title" style="color:white">Task Title</label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="Enter your title" required="" autofocus>                
+          </div>
+          <div class="form-label-group">
+              <label for="title" style="color:white">Image </label>
+            <input type="file" id="title2" name="title2" class="form-control" placeholder="Enter your title" required="" autofocus>                
+          </div>
+         
+          <br>
+          <div class="form-label-group">
+              <label for="task_content" style="color:white">Task Content</label>
+            <input type="text" id="task_content" class="form-control" name="task_content" placeholder="Enter your task content" required>
+            
+          </div>
+          <br>
+          <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Add Task</button>
+          <hr class="my-4">
+         
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+</div>
+<br>
+
+
+{% endblock%}

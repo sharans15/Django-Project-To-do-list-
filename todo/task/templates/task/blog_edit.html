@@ -1,0 +1,47 @@
+{% extends 'task/blog_base.html' %}
+{% block content%}
+
+<div style="height: 50px;">
+
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-100 col-md-100 col-lg-100 mx-auto" style="margin-left: 90%;margin-top: 0%;;">
+    <div class="card card-signin my-5">
+      <div class="card-body" style="background-color: grey;padding:100px">
+          <hr class="my-4">
+        <h3 class="card-title text-center" style="color:white">Update Blog</h3>
+        <form class="form-signin" action="" method="POST">
+            {% csrf_token %}
+            {% for y in todo %}
+
+          <div class="form-label-group">
+              <label for="title" style="color:white">Blog Title</label>
+            <input type="" id="title" name="title" class="form-control" placeholder="Enter your title" required="" value ="{{y.title}}">                
+          </div>
+          <br>
+          <div class="form-label-group">
+              <label for="task_content" style="color:white">Blog Description</label>
+            <input type="" id="description" class="form-control" name="description" placeholder="Enter your task content" value = "{{y.description}}" required>
+            
+          </div>
+          <br>
+          <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Update Task</button>
+          <hr class="my-4">
+         
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+</div>
+<br>
+
+{% endfor %}      
+
+
+{% endblock%}
